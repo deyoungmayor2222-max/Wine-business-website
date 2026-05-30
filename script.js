@@ -7,14 +7,22 @@ function welcomeMessage() {
 
 /* SEARCH */
 function searchProduct() {
-    const input = document.getElementById("search").value.toLowerCase();
-    const cards = document.querySelectorAll(".card");
 
-    cards.forEach(card => {
-        const nameEl = card.querySelector("h3");
-        const text = (nameEl ? nameEl.textContent : card.textContent).toLowerCase();
-        card.style.display = text.includes(input) ? "block" : "none";
-    });
+  let input = document.getElementById("search").value.toLowerCase();
+
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+
+    let text = card.innerText.toLowerCase();
+
+    if(text.includes(input)){
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+
+  });
 }
 
 /* ADD TO CART */
@@ -138,7 +146,10 @@ function checkout() {
 
     message += `%0ATotal: ₦${total.toLocaleString()}`;
 
-    window.open(`https://wa.me/2349030134298?text=${encodeURIComponent(message)}`, "_blank");
+    /* SUCCESS MESSAGE */
+alert("Order placed successfully! We will contact you shortly.");
+
+    window.open(`https://wa.me/221787305289?text=${encodeURIComponent(message)}`, "_blank");
 }
 
 /* SIMPLE WHATSAPP ORDER */
@@ -153,7 +164,7 @@ function sendWhatsappOrder() {
     let message =
 `Hello Chii-Mayor Business Ventures,\n\nI would like to place the following order:\n\n${order}\n\nTotal Amount: ₦${total.toLocaleString()}\n\nThank you.`;
 
-    window.open(`https://wa.me/2349030134298?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/221787305289?text=${encodeURIComponent(message)}`, "_blank");
 }
 
 /* SCROLL TO TOP BUTTON */
